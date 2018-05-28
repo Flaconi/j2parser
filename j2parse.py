@@ -41,8 +41,8 @@ if options.file:
 
 if options.environment:
     for e in options.environment:
-        (var, value) = e.split('=')
-        environment[var] = value
+        fields = e.split('=')
+        environment[fields[0]] = "=".join(fields[1:])
 
 result = render(tpl_file, environment)
 
