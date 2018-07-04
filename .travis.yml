@@ -7,5 +7,12 @@ language: python
 python:
   - "3.6"
 
+addons:
+  sonarcloud:
+    organization: "flaconi-gmbh"
+
+
 script:
-  - pytest
+  - sonar-scanner -Dsonar.login=${SONARCLOUD_TOKEN}
+          -Dsonar.branch.name=${TRAVIS_BRANCH}
+          $( [ "${TRAVIS_BRANCH}" != "master" ] && echo "-Dsonar.branch.target=master" )
