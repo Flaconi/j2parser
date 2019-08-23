@@ -35,7 +35,7 @@ environment = {}
 if options.file:
     with open(options.file, 'r') as stream:
         try:
-            environment = yaml.load(stream)
+            environment = yaml.load(stream, Loader=yaml.FullLoader)
         except yaml.YAMLError as exc:
             print(exc)
 
